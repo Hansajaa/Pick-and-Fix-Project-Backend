@@ -1,7 +1,7 @@
 module.exports.pickAndFixResponse = (status, message, data) => {
     return {
-        status,
-        message,
-        data
+        "status": status,
+        "message":message,
+        "data":data
     }
 }

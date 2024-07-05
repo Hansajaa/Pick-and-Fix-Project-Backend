@@ -35,6 +35,28 @@ const insertUser = async (request, response) => {
     }
 }
 
+
+const checkUsername = async (request, response) => {
+
+    try{
+        logger.info("Recieved request to Check username");
+        const userName = request.query.userName;
+
+        const res = await userRepository.checkUsername(userName);
+        if(res){
+            logger.success(SUCCESS_SERVER_GET_DATA_MSG);
+            response.status(statusCode.SUCCESS).send(Response.pickAndFixResponse(statusCode.SUCCESS, SUCCESS_SERVER_GET_DATA_MSG, true));
+        }else{
+            logger.info(SUCCESS_SERVER_GET_DATA_MSG);
+            response.status(statusCode.SUCCESS).send(Response.pickAndFixResponse(statusCode.SUCCESS, SUCCESS_SERVER_GET_DATA_MSG, false));
+        }
+    }catch(error){
+        logger.error(FAILED_SERVER_GET_DATA_MSG);
+        response.status(statusCode.INTERNAL_SERVER_ERROR).send(Response.pickAndFixResponse(statusCode.INTERNAL_SERVER_ERROR, FAILED_SERVER_GET_DATA_MSG, false));
+    }
+}
+
 module.exports.insertUser = insertUser;
+module.exports.checkUsername = checkUsername;
 
 

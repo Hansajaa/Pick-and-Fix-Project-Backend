@@ -7,7 +7,8 @@ const userSchema = new Schema({
     contactNumber:String,
     email:String,
     address:String,
-    password:String
+    password:String,
+    role:String
 })
 
 const User = mongoose.model('user',userSchema);

@@ -23,7 +23,8 @@ const insertUser = async (request, response) => {
             address: user.address,
             contactNumber: user.contactNumber,
             email: user.email,
-            password: user.password
+            password: user.password,
+            role: user.role,
         })
 
         await userRepository.createUser(newUser);
